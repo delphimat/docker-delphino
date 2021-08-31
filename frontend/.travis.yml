@@ -1,0 +1,10 @@
+language: generic
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t delphimat/docker-delphino -f Dockerfile.dev .
+
+script:
+  - docker run -e CI=true delphimat/docker-delphino npm run test
